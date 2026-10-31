@@ -1,0 +1,107 @@
+# The repository and optional OAuth URL are inserted into the rendered copy by GitHub Actions.
+backend:
+  name: github
+  repo: Jun0zo/beyond-representation-source
+  branch: main
+  auth_methods: [token]
+  # __OAUTH_CONFIG__
+
+app_title: Beyond Representation · 글 관리
+
+publish_mode:
+  type: editorial_workflow
+  stages: [draft, pending_publish]
+  direct_publish: true
+
+media_folder: images/uploads
+public_folder: /images/uploads
+
+collections:
+  - name: journal
+    label: Research Journal
+    label_singular: 연구 기록
+    folder: posts/journal
+    path: '{{slug}}/index'
+    extension: qmd
+    format: yaml-frontmatter
+    media_folder: ''
+    public_folder: ''
+    create: true
+    fields:
+      - &title { label: 제목, name: title, widget: string }
+      - &subtitle { label: 부제, name: subtitle, widget: string, required: false }
+      - &description { label: 짧은 소개, name: description, widget: text, required: false, hint: '목록에 보여 줄 한두 문장' }
+      - &date { label: 날짜, name: date, widget: datetime, type: date }
+      - { label: 태그, name: categories, widget: list, default: ['Research Journal'], hint: '첫 번째 태그가 홈페이지 글 목록에 표시됩니다.' }
+      - &image { label: 표지 이미지, name: image, widget: image, required: false }
+      - &image-alt { label: 이미지 설명, name: image-alt, widget: string, required: false, hint: '이미지를 볼 수 없는 독자를 위한 짧은 설명' }
+      - &featured { label: 홈페이지 추천 글, name: featured, widget: boolean, default: false, required: false }
+      - &draft { label: 사이트에 공개하지 않기, name: draft, widget: boolean, default: false, required: false, hint: '검토가 끝나 공개할 때 이 설정을 끄고 발행하세요.' }
+      - &show-categories { name: title-block-categories, widget: hidden, default: true }
+      - &body { label: 본문, name: body, widget: richtext }
+  - name: neuroscience
+    label: Neuroscience × AI
+    label_singular: 뇌과학과 AI
+    folder: posts/neuroscience
+    path: '{{slug}}/index'
+    extension: qmd
+    format: yaml-frontmatter
+    media_folder: ''
+    public_folder: ''
+    create: true
+    fields:
+      - *title
+      - *subtitle
+      - *description
+      - *date
+      - { label: 태그, name: categories, widget: list, default: ['Neuroscience × AI'], hint: '첫 번째 태그가 홈페이지 글 목록에 표시됩니다.' }
+      - *image
+      - *image-alt
+      - *featured
+      - *draft
+      - *show-categories
+      - *body
+  - name: papers
+    label: Papers
+    label_singular: 논문
+    folder: posts/papers
+    path: '{{slug}}/index'
+    extension: qmd
+    format: yaml-frontmatter
+    media_folder: ''
+    public_folder: ''
+    create: true
+    fields:
+      - *title
+      - *subtitle
+      - *description
+      - *date
+      - { label: 태그, name: categories, widget: list, default: ['Papers'], hint: '첫 번째 태그가 홈페이지 글 목록에 표시됩니다.' }
+      - *image
+      - *image-alt
+      - *featured
+      - *draft
+      - *show-categories
+      - *body
+  - name: agent
+    label: Research Agent
+    label_singular: 연구 에이전트
+    folder: posts/agent
+    path: '{{slug}}/index'
+    extension: qmd
+    format: yaml-frontmatter
+    media_folder: ''
+    public_folder: ''
+    create: true
+    fields:
+      - *title
+      - *subtitle
+      - *description
+      - *date
+      - { label: 태그, name: categories, widget: list, default: ['Research Agent'], hint: '첫 번째 태그가 홈페이지 글 목록에 표시됩니다.' }
+      - *image
+      - *image-alt
+      - *featured
+      - *draft
+      - *show-categories
+      - *body

@@ -1,0 +1,23 @@
+:root {
+  color-scheme: light;
+  --paper: #f6f6f5;
+  --ink: #151920;
+  --muted: #5f646a;
+  --rule: #b7b9b9;
+  --accent: #963332;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: Pretendard, "Apple SD Gothic Neo", sans-serif; }
+.setup { min-height: 100vh; padding: 2rem clamp(1.5rem, 6vw, 6rem); }
+.setup[hidden], .action[hidden] { display: none; }
+.brand { display: block; padding-bottom: 1.5rem; border-bottom: 1px solid var(--rule); color: var(--ink); font: 1.4rem/1.2 "Iowan Old Style", Baskerville, serif; text-decoration: none; }
+.setup-content { max-width: 37rem; margin: clamp(5rem, 16vh, 12rem) auto 0; }
+.eyebrow { margin: 0 0 1.4rem; color: var(--accent); font-size: .75rem; letter-spacing: .15em; }
+h1 { margin: 0 0 1.4rem; font: 400 clamp(2rem, 4vw, 3.2rem)/1.3 "AppleMyungjo", serif; word-break: keep-all; }
+#setup-message { max-width: 32rem; margin: 0 0 2rem; color: var(--muted); line-height: 1.8; word-break: keep-all; }
+.action, .return { display: inline-block; min-height: 44px; padding: .75rem 0; color: var(--accent); text-decoration: none; }
+.action { margin-right: 1.75rem; border-bottom: 1px solid currentColor; }
+.return { color: var(--muted); }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+a:hover { opacity: .7; }
+.noscript { padding: 1.5rem; }

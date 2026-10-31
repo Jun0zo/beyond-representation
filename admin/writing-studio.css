@@ -1,0 +1,100 @@
+/* The CMS owns its controls; these styles adapt its documented field hooks. */
+html[data-theme="light"],
+html[data-auto-theming="true"][data-theme="dark"] {
+  --sui-primary-accent-color: #963332;
+  --sui-primary-accent-color-dark: #6d2423;
+  --sui-primary-accent-color-light: #a74745;
+  --sui-primary-accent-color-text: #963332;
+  --sui-focus-ring-color: #963332;
+  --sui-primary-background-color: #f6f6f5;
+  --sui-content-background-color: #fff;
+}
+/* Automatic mode starts on paper; an explicitly chosen dark theme is respected. */
+html[data-auto-theming="true"][data-theme="dark"] {
+  color-scheme: light;
+  --sui-background-color-1-hsl: 210 5% 100%;
+  --sui-background-color-2-hsl: 210 5% 98%;
+  --sui-background-color-3-hsl: 210 5% 95%;
+  --sui-background-color-4-hsl: 210 5% 92%;
+  --sui-background-color-5-hsl: 210 5% 84%;
+  --sui-foreground-color-1-hsl: 210 5% 5%;
+  --sui-foreground-color-2-hsl: 210 5% 25%;
+  --sui-foreground-color-3-hsl: 210 5% 35%;
+  --sui-foreground-color-4-hsl: 210 5% 45%;
+  --sui-foreground-color-5-hsl: 210 5% 65%;
+  --sui-border-color-1-hsl: 210 5% 60%;
+  --sui-border-color-2-hsl: 210 5% 72%;
+  --sui-border-color-3-hsl: 210 5% 80%;
+  --sui-alert-background-color-lightness: 90%;
+  --sui-alert-background-color-saturation: 65%;
+  --sui-alert-border-color-lightness: 68%;
+  --sui-alert-foreground-color-lightness: 25%;
+  --sui-error-border-color-lightness: 60%;
+}
+[data-mode="edit"] [data-key-path="title"] input {
+  font-family: "AppleMyungjo", "Noto Serif KR", Georgia, serif;
+  font-size: 1.18rem;
+}
+[data-mode="edit"] [data-key-path="body"] [contenteditable="true"] {
+  font-family: Pretendard, "Apple SD Gothic Neo", system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.85;
+}
+
+/* The CMS preview is a separate pane, so style its documented field hooks. */
+[data-mode="preview"] #second-pane-body { background: #fff; }
+[data-mode="preview"] [role="document"] {
+  max-width: 760px;
+  min-height: 100%;
+  margin: 0 auto;
+  padding: 28px clamp(24px, 6vw, 56px) 72px;
+  background: #fff;
+  color: #151920;
+  font-family: Pretendard, "Apple SD Gothic Neo", system-ui, sans-serif;
+}
+[data-mode="preview"] [role="document"]::before {
+  content: "Beyond Representation";
+  display: block;
+  padding-bottom: 16px;
+  margin-bottom: 36px;
+  border-bottom: 1px solid #c9cbca;
+  color: #151920;
+  font: 400 24px/1.15 "Iowan Old Style", Baskerville, Georgia, serif;
+  letter-spacing: -.035em;
+}
+[data-mode="preview"] [data-key-path] > h4 { display: none; }
+[data-mode="preview"] [data-lazy-key-path="image"],
+[data-mode="preview"] [data-lazy-key-path="image-alt"],
+[data-mode="preview"] [data-lazy-key-path="featured"] { display: none; }
+[data-mode="preview"] [data-key-path="title"] p {
+  margin: 0 0 14px;
+  color: #151920;
+  font: 400 clamp(28px, 4vw, 44px)/1.3 "AppleMyungjo", "Noto Serif KR", Georgia, serif;
+  letter-spacing: -.035em;
+  word-break: keep-all;
+}
+[data-mode="preview"] [data-key-path="subtitle"] p,
+[data-mode="preview"] [data-key-path="description"] p {
+  margin: 0 0 18px;
+  color: #5f646a;
+  font-size: 15px;
+  line-height: 1.8;
+  word-break: keep-all;
+}
+[data-mode="preview"] [data-key-path="date"] p { margin: 0 0 14px; color: #5f646a; font-size: 12px; }
+[data-mode="preview"] [data-key-path="categories"] ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  padding: 0 0 24px;
+  margin: 0 0 24px;
+  border-bottom: 1px solid #c9cbca;
+  list-style: none;
+  color: #963332;
+  font-size: 12px;
+}
+[data-mode="preview"] [data-key-path="categories"] li::before { content: "#"; }
+[data-mode="preview"] [data-key-path="body"] { color: #3f4348; font-size: 15px; line-height: 1.95; word-break: keep-all; overflow-wrap: anywhere; }
+[data-mode="preview"] [data-key-path="body"] h2,
+[data-mode="preview"] [data-key-path="body"] h3 { color: #151920; font-family: "AppleMyungjo", "Noto Serif KR", Georgia, serif; font-weight: 400; }
+[data-mode="preview"] [data-key-path="body"] h2 { padding-bottom: .35em; border-bottom: 1px solid #d7d8d7; }

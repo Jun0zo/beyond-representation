@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>글 관리 · Beyond Representation</title>
+  <link rel="stylesheet" href="landing.css">
+  <link rel="stylesheet" href="writing-studio.css">
+</head>
+<body>
+  <main class="setup" id="setup" aria-live="polite">
+    <a class="brand" href="../">Beyond Representation</a>
+    <div class="setup-content">
+      <p class="eyebrow">WRITING STUDIO</p>
+      <h1 id="setup-title">글 관리 화면을 불러오고 있습니다.</h1>
+      <p id="setup-message">잠시만 기다려 주세요.</p>
+      <a class="action" id="demo-link" href="demo/" hidden>관리 화면 체험하기 <span aria-hidden="true">→</span></a>
+      <a class="return" href="../">블로그로 돌아가기</a>
+    </div>
+  </main>
+  <noscript><p class="noscript">글 관리 화면을 사용하려면 브라우저에서 JavaScript를 켜 주세요.</p></noscript>
+  <script>
+    (async function () {
+      const title = document.getElementById('setup-title');
+      const message = document.getElementById('setup-message');
+      const demo = document.getElementById('demo-link');
+      try {
+        const response = await fetch('config.yml', { cache: 'no-store' });
+        if (!response.ok) throw new Error('configuration unavailable');
+        const config = await response.text();
+        if (config.includes('__GITHUB_REPOSITORY__')) {
+          title.textContent = '글을 쓰는 공간을 준비하고 있어요.';
+          message.textContent = 'GitHub 저장소와 로그인을 연결하면 여기에서 글을 쓰고 수정할 수 있어요. 지금은 체험 화면에서 편집 방식을 살펴볼 수 있습니다.';
+          demo.hidden = false;
+          return;
+        }
+        const cms = document.createElement('script');
+        cms.src = 'https://unpkg.com/@sveltia/cms@0.256.1/dist/sveltia-cms.js';
+        cms.onload = function () {
+          const setup = document.getElementById('setup');
+          if (setup) setup.hidden = true;
+        };
+        cms.onerror = function () {
+          title.textContent = '글 관리 화면을 불러오지 못했습니다.';
+          message.textContent = '인터넷 연결을 확인하고 다시 시도해 주세요.';
+        };
+        document.body.appendChild(cms);
+      } catch (error) {
+        title.textContent = '글 관리 설정을 불러오지 못했습니다.';
+        message.textContent = '잠시 후 다시 시도해 주세요.';
+      }
+    })();
+  </script>
+</body>
+</html>

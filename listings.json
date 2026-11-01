@@ -4,15 +4,7 @@
     "items": []
   },
   {
-    "listing": "/neuroscience.html",
-    "items": []
-  },
-  {
-    "listing": "/index.html",
-    "items": []
-  },
-  {
-    "listing": "/agent.html",
+    "listing": "/papers.html",
     "items": []
   },
   {
@@ -20,7 +12,15 @@
     "items": []
   },
   {
-    "listing": "/papers.html",
+    "listing": "/agent.html",
+    "items": []
+  },
+  {
+    "listing": "/index.html",
+    "items": []
+  },
+  {
+    "listing": "/neuroscience.html",
     "items": []
   }
 ]

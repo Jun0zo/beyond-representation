@@ -42,6 +42,101 @@ html[data-auto-theming="true"][data-theme="dark"] {
   line-height: 1.85;
 }
 
+/* Keep the editor's own image fields and upload handling, but show the photo
+   at reading size instead of presenting it as a tiny file thumbnail. */
+[data-mode="edit"] [data-key-path="body"] {
+  display: flex;
+  flex-direction: column;
+}
+[data-mode="edit"] [data-key-path="body"] > header { order: 0; }
+[data-mode="edit"] [data-key-path="body"] > :is(header, .footer, .field-wrapper) { width: 100%; }
+[data-mode="edit"] [data-key-path="body"] > .footer {
+  order: 1;
+  justify-content: flex-start;
+  margin-block: 0 8px;
+}
+[data-mode="edit"] [data-key-path="body"] > .field-wrapper { order: 2; }
+[data-mode="edit"] [data-key-path="body"] :is([data-component-name="image"], [data-component-name="linked-image"]) {
+  overflow: hidden;
+  border: 1px solid var(--sui-control-border-color);
+  border-radius: 6px;
+  background: var(--sui-content-background-color, var(--sui-primary-background-color));
+}
+[data-mode="edit"] [data-key-path="body"] :is([data-component-name="image"], [data-component-name="linked-image"]) > .header {
+  background: var(--sui-primary-background-color);
+  border-bottom: 1px solid var(--sui-control-border-color);
+}
+[data-mode="edit"] [data-key-path="body"] :is([data-component-name="image"], [data-component-name="linked-image"]) .item-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 8px;
+  padding: 0 8px 8px;
+}
+[data-mode="edit"] [data-key-path="body"] :is([data-component-name="image"], [data-component-name="linked-image"]) .item-list > :is([data-field-type="image"], [data-key-path$=":alt"]) {
+  grid-column: 1 / -1;
+}
+[data-mode="edit"] [data-key-path="body"] :is([data-component-name="image"], [data-component-name="linked-image"]) .item-list > [data-field-type="image"] {
+  padding: 12px 4px 4px;
+}
+[data-mode="edit"] [data-key-path="body"] :is([data-component-name="image"], [data-component-name="linked-image"]) [data-field-type="image"]:has(.filled) > header {
+  display: none;
+}
+[data-mode="edit"] [data-key-path="body"] :is([data-component-name="image"], [data-component-name="linked-image"]) .filled {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 8px;
+}
+[data-mode="edit"] [data-key-path="body"] :is([data-component-name="image"], [data-component-name="linked-image"]) .filled > .preview {
+  width: 100% !important;
+  height: auto !important;
+  max-height: 360px;
+  min-height: 120px;
+  aspect-ratio: auto;
+  padding: 0 !important;
+  border-width: 0;
+  border-radius: 3px;
+  background: var(--sui-primary-background-color);
+}
+[data-mode="edit"] [data-key-path="body"] :is([data-component-name="image"], [data-component-name="linked-image"]) .filled > .preview img {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  max-height: 360px;
+  object-fit: contain;
+}
+[data-mode="edit"] [data-key-path="body"] :is([data-component-name="image"], [data-component-name="linked-image"]) .filled > div:not(.preview) {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  font-size: 12px;
+}
+[data-mode="edit"] [data-key-path="body"] :is([data-component-name="image"], [data-component-name="linked-image"]) .filled .path {
+  flex: 1;
+  min-width: 0;
+}
+[data-mode="edit"] [data-key-path="body"] :is([data-component-name="image"], [data-component-name="linked-image"]) .item-list > [data-field-type="string"] {
+  padding: 4px 4px 8px;
+}
+[data-mode="edit"] [data-key-path="body"] :is([data-component-name="image"], [data-component-name="linked-image"]) .item-list > [data-field-type="string"] header {
+  font-size: 12px;
+}
+[data-mode="edit"] [data-key-path="body"] :is([data-component-name="image"], [data-component-name="linked-image"]) .item-list > [data-field-type="string"] input {
+  font-size: 13px;
+}
+[data-mode="edit"] [data-key-path="body"] :is([data-component-name="image"], [data-component-name="linked-image"]) [data-key-path$=":alt"] header h4::after {
+  content: " · 이미지가 보이지 않을 때의 설명";
+  color: var(--sui-secondary-foreground-color);
+  font-size: 11px;
+  font-weight: 400;
+}
+@media (max-width: 680px) {
+  [data-mode="edit"] [data-key-path="body"] :is([data-component-name="image"], [data-component-name="linked-image"]) .item-list > [data-field-type="string"] {
+    grid-column: 1 / -1;
+  }
+}
+
 /* The CMS preview is a separate pane, so style its documented field hooks. */
 [data-mode="preview"] #second-pane-body { background: #fff; }
 [data-mode="preview"] [role="document"] {

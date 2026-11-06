@@ -6,7 +6,7 @@
   <meta name="robots" content="noindex, nofollow">
   <title>글 관리 · Beyond Representation</title>
   <link rel="stylesheet" href="landing.css">
-  <link rel="stylesheet" href="writing-studio.css?v=4-20261106">
+  <link rel="stylesheet" href="writing-studio.css?v=5-20261106">
 </head>
 <body>
   <main class="setup" id="setup" aria-live="polite">
@@ -20,6 +20,7 @@
     </div>
   </main>
   <noscript><p class="noscript">글 관리 화면을 사용하려면 브라우저에서 JavaScript를 켜 주세요.</p></noscript>
+  <script src="image-resize.js?v=1-20261106"></script>
   <script>
     (async function () {
       const title = document.getElementById('setup-title');
@@ -35,11 +36,20 @@
           demo.hidden = false;
           return;
         }
+        window.CMS_MANUAL_INIT = true;
         const cms = document.createElement('script');
         cms.src = 'https://unpkg.com/@sveltia/cms@0.256.1/dist/sveltia-cms.js';
-        cms.onload = function () {
-          const setup = document.getElementById('setup');
-          if (setup) setup.hidden = true;
+        cms.onload = async function () {
+          try {
+            window.BlogImageResize.register(window.CMS);
+            await window.CMS.init();
+            const setup = document.getElementById('setup');
+            if (setup) setup.hidden = true;
+          } catch (error) {
+            title.textContent = '글 관리 화면을 불러오지 못했습니다.';
+            message.textContent = '잠시 후 다시 시도해 주세요.';
+            console.error(error);
+          }
         };
         cms.onerror = function () {
           title.textContent = '글 관리 화면을 불러오지 못했습니다.';

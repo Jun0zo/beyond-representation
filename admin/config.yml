@@ -8,10 +8,7 @@ backend:
 
 app_title: Beyond Representation · 글 관리
 
-publish_mode:
-  type: editorial_workflow
-  stages: [draft, pending_publish]
-  direct_publish: true
+publish_mode: simple
 
 media_folder: images/uploads
 public_folder: /images/uploads
@@ -29,16 +26,16 @@ collections:
     create: true
     fields:
       - &title { label: 제목, name: title, widget: string }
+      - &draft { label: 비공개 초안, name: draft, widget: boolean, default: true, required: false, hint: '켜면 비공개로 저장됩니다. 끄고 저장하면 공개되며, 공개된 글은 저장할 때마다 블로그에 반영됩니다.' }
+      - &body { label: 본문, name: body, widget: richtext }
       - &subtitle { label: 부제, name: subtitle, widget: string, required: false }
       - &description { label: 짧은 소개, name: description, widget: text, required: false, hint: '목록에 보여 줄 한두 문장' }
-      - &date { label: 날짜, name: date, widget: datetime, type: date }
+      - &date { label: 날짜, name: date, widget: datetime, type: date, default: '{{now}}', hint: '처음 쓴 날짜가 자동으로 입력됩니다. 발행할 때 원하는 날짜로 바꿀 수 있어요.' }
       - { label: 태그, name: categories, widget: list, default: ['Research Journal'], hint: '첫 번째 태그가 홈페이지 글 목록에 표시됩니다.' }
       - &image { label: 표지 이미지, name: image, widget: image, required: false }
       - &image-alt { label: 이미지 설명, name: image-alt, widget: string, required: false, hint: '이미지를 볼 수 없는 독자를 위한 짧은 설명' }
       - &featured { label: 홈페이지 추천 글, name: featured, widget: boolean, default: false, required: false }
-      - &draft { label: 사이트에 공개하지 않기, name: draft, widget: boolean, default: false, required: false, hint: '검토가 끝나 공개할 때 이 설정을 끄고 발행하세요.' }
       - &show-categories { name: title-block-categories, widget: hidden, default: true }
-      - &body { label: 본문, name: body, widget: richtext }
   - name: neuroscience
     label: Neuroscience × AI
     label_singular: 뇌과학과 AI
@@ -51,6 +48,8 @@ collections:
     create: true
     fields:
       - *title
+      - *draft
+      - *body
       - *subtitle
       - *description
       - *date
@@ -58,9 +57,7 @@ collections:
       - *image
       - *image-alt
       - *featured
-      - *draft
       - *show-categories
-      - *body
   - name: papers
     label: Papers
     label_singular: 논문
@@ -73,6 +70,8 @@ collections:
     create: true
     fields:
       - *title
+      - *draft
+      - *body
       - *subtitle
       - *description
       - *date
@@ -80,9 +79,7 @@ collections:
       - *image
       - *image-alt
       - *featured
-      - *draft
       - *show-categories
-      - *body
   - name: agent
     label: Research Agent
     label_singular: 연구 에이전트
@@ -95,6 +92,8 @@ collections:
     create: true
     fields:
       - *title
+      - *draft
+      - *body
       - *subtitle
       - *description
       - *date
@@ -102,6 +101,4 @@ collections:
       - *image
       - *image-alt
       - *featured
-      - *draft
       - *show-categories
-      - *body

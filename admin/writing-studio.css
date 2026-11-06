@@ -36,6 +36,7 @@ html[data-auto-theming="true"][data-theme="dark"] {
   font-size: 1.18rem;
 }
 [data-mode="edit"] [data-key-path="body"] [contenteditable="true"] {
+  min-height: 18rem;
   font-family: Pretendard, "Apple SD Gothic Neo", system-ui, sans-serif;
   font-size: 1rem;
   line-height: 1.85;
@@ -44,6 +45,8 @@ html[data-auto-theming="true"][data-theme="dark"] {
 /* The CMS preview is a separate pane, so style its documented field hooks. */
 [data-mode="preview"] #second-pane-body { background: #fff; }
 [data-mode="preview"] [role="document"] {
+  display: flex;
+  flex-direction: column;
   max-width: 760px;
   min-height: 100%;
   margin: 0 auto;
@@ -65,7 +68,14 @@ html[data-auto-theming="true"][data-theme="dark"] {
 [data-mode="preview"] [data-key-path] > h4 { display: none; }
 [data-mode="preview"] [data-lazy-key-path="image"],
 [data-mode="preview"] [data-lazy-key-path="image-alt"],
-[data-mode="preview"] [data-lazy-key-path="featured"] { display: none; }
+[data-mode="preview"] [data-lazy-key-path="featured"],
+[data-mode="preview"] [data-lazy-key-path="draft"] { display: none; }
+[data-mode="preview"] [data-lazy-key-path="title"] { order: 1; }
+[data-mode="preview"] [data-lazy-key-path="subtitle"] { order: 2; }
+[data-mode="preview"] [data-lazy-key-path="description"] { order: 3; }
+[data-mode="preview"] [data-lazy-key-path="date"] { order: 4; }
+[data-mode="preview"] [data-lazy-key-path="categories"] { order: 5; }
+[data-mode="preview"] [data-lazy-key-path="body"] { order: 6; }
 [data-mode="preview"] [data-key-path="title"] p {
   margin: 0 0 14px;
   color: #151920;

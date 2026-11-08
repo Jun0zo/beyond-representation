@@ -228,3 +228,116 @@ html[data-auto-theming="true"][data-theme="dark"] {
 [data-mode="preview"] [data-key-path="body"] h2,
 [data-mode="preview"] [data-key-path="body"] h3 { color: #151920; font-family: "AppleMyungjo", "Noto Serif KR", Georgia, serif; font-weight: 400; }
 [data-mode="preview"] [data-key-path="body"] h2 { padding-bottom: .35em; border-bottom: 1px solid #d7d8d7; }
+
+/* Writing canvas: keep the CMS controls and publishing state intact while
+   giving the editor a quieter, document-like surface. */
+.content-editor {
+  color-scheme: dark;
+  --sui-primary-background-color: #0b0b0b;
+  --sui-secondary-background-color: #141414;
+  --sui-tertiary-background-color: #202020;
+  --sui-content-background-color: #0b0b0b;
+  --sui-primary-foreground-color: #e6e5e2;
+  --sui-secondary-foreground-color: #aaa8a4;
+  --sui-tertiary-foreground-color: #8b8985;
+  --sui-disabled-foreground-color: #6f6e6b;
+  --sui-primary-border-color: #383838;
+  --sui-secondary-border-color: #282828;
+  --sui-control-border-color: #444;
+  --sui-control-background-color: #222;
+  --sui-control-foreground-color: #e6e5e2;
+  --sui-textbox-background-color: #151515;
+  --sui-textbox-foreground-color: #e6e5e2;
+  --sui-textbox-border-color: #454545;
+  --sui-textbox-placeholder-foreground-color: #85827e;
+  --sui-button-background-color: #222;
+  --sui-button-border-color: #444;
+  --sui-hover-background-color: #ffffff16;
+  --sui-active-background-color: #ffffff25;
+  --sui-selected-background-color: #ffffff25;
+  --sui-primary-accent-color: #c5807a;
+  --sui-primary-accent-color-text: #e6a39d;
+  --sui-primary-accent-color-inverted: #151515;
+  --sui-focus-ring-color: #e2a39d;
+  background: #0b0b0b;
+  color: #e6e5e2;
+}
+[data-mode="edit"] #first-pane-body > .content {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: clamp(32px, 7vw, 100px) clamp(20px, 6vw, 80px) 100px;
+}
+[data-mode="edit"] #first-pane-body > .content > [data-key-path] {
+  padding-inline: 0;
+}
+[data-mode="edit"] [data-key-path="title"] {
+  padding-block: 0 20px !important;
+  border: 0 !important;
+}
+[data-mode="edit"] [data-key-path="title"] input {
+  height: auto;
+  min-height: 1.35em;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: #f1efeb;
+  font: 400 clamp(32px, 4vw, 52px)/1.35 "AppleMyungjo", "Noto Serif KR", Georgia, serif;
+  letter-spacing: -.035em;
+  box-shadow: none;
+}
+[data-mode="edit"] [data-key-path="title"] input:focus-visible {
+  outline: 2px solid var(--sui-focus-ring-color);
+  outline-offset: 5px;
+}
+[data-mode="edit"] [data-key-path="draft"] {
+  padding-block: 12px 16px !important;
+  border-top: 1px solid #303030;
+  border-bottom: 1px solid #303030;
+}
+[data-mode="edit"] [data-key-path="body"] {
+  padding-block: 20px 36px !important;
+  border: 0 !important;
+}
+[data-mode="edit"] [data-key-path="body"] .text-editor {
+  margin: 0;
+}
+[data-mode="edit"] [data-key-path="body"] [role="toolbar"] {
+  border: 0;
+  border-bottom: 1px solid #303030;
+  background: #0b0b0b;
+}
+[data-mode="edit"] [data-key-path="body"] [contenteditable="true"] {
+  min-height: 48vh;
+  padding: 24px 0 48px;
+  border: 0;
+  border-radius: 0;
+  outline-offset: 5px;
+  background: transparent;
+  color: #e3e1dd;
+  font-size: 1.05rem;
+  line-height: 1.9;
+}
+[data-mode="edit"] [data-key-path="body"] [contenteditable="true"] :is(h1, h2, h3) {
+  color: #f1efeb;
+  font-family: "AppleMyungjo", "Noto Serif KR", Georgia, serif;
+}
+[data-mode="edit"] [data-key-path="body"] [contenteditable="true"] a { color: #e6a39d; }
+@media (max-width: 680px) {
+  [data-mode="edit"] #first-pane-body > .content { padding: 28px 20px 72px; }
+  [data-mode="edit"] [data-key-path="title"] input { font-size: 30px; }
+  [data-mode="edit"] [data-key-path="body"] [contenteditable="true"] { font-size: 1rem; }
+}
+
+/* The draft switch stays visible before the document, even for long posts. */
+[data-mode="edit"] #first-pane-body > .content {
+  display: flex;
+  flex-direction: column;
+  container-type: inline-size;
+}
+[data-mode="edit"] #first-pane-body > .content > [data-key-path="draft"] { order: -1; }
+[data-mode="edit"] [data-key-path="draft"] { margin-bottom: 38px; }
+[data-mode="edit"] [data-key-path="title"] input { font-size: clamp(26px, 5cqw, 52px); }
+[data-mode="edit"] [data-key-path="draft"] .footer,
+[data-mode="edit"] [data-key-path="body"] > .footer { color: #aaa8a4; }
+[data-mode="edit"] #first-pane-body > .content { width: 100%; box-sizing: border-box; }

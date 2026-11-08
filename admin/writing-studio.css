@@ -208,7 +208,8 @@ html[data-theme="light"] {
 
 /* Writing canvas: keep the CMS controls and publishing state intact while
    giving the editor a quieter, document-like surface. */
-html[data-theme="dark"] .content-editor {
+html[data-theme="dark"] .content-editor:not([data-br-theme]),
+.content-editor[data-br-theme="dark"] {
   color-scheme: dark;
   --sui-primary-background-color: #0b0b0b;
   --sui-secondary-background-color: #141414;
@@ -245,8 +246,35 @@ html[data-theme="dark"] .content-editor {
   background: var(--br-canvas);
   color: var(--sui-primary-foreground-color);
 }
-html[data-theme="light"] .content-editor {
+html[data-theme="light"] .content-editor:not([data-br-theme]),
+.content-editor[data-br-theme="light"] {
   color-scheme: light;
+  --sui-primary-background-color: #fff;
+  --sui-secondary-background-color: #f5f5f4;
+  --sui-tertiary-background-color: #ededeb;
+  --sui-content-background-color: #fff;
+  --sui-primary-foreground-color: #303030;
+  --sui-secondary-foreground-color: #62625f;
+  --sui-tertiary-foreground-color: #777773;
+  --sui-disabled-foreground-color: #888884;
+  --sui-primary-border-color: #bdbdb9;
+  --sui-secondary-border-color: #dededb;
+  --sui-control-border-color: #bdbdb9;
+  --sui-control-background-color: #ededeb;
+  --sui-control-foreground-color: #303030;
+  --sui-textbox-background-color: #fff;
+  --sui-textbox-foreground-color: #303030;
+  --sui-textbox-border-color: #bdbdb9;
+  --sui-textbox-placeholder-foreground-color: #777773;
+  --sui-button-background-color: #ededeb;
+  --sui-button-border-color: #bdbdb9;
+  --sui-hover-background-color: #0000000f;
+  --sui-active-background-color: #00000020;
+  --sui-selected-background-color: #00000020;
+  --sui-primary-accent-color: #963332;
+  --sui-primary-accent-color-text: #963332;
+  --sui-primary-accent-color-inverted: #fff;
+  --sui-focus-ring-color: #963332;
   --br-canvas: #fff;
   --br-heading: #191919;
   --br-text: #2b2b2b;
@@ -341,4 +369,44 @@ html[data-theme="light"] .content-editor {
 }
 [data-mode="edit"] [data-key-path="body"] [contenteditable="true"] p:last-child {
   margin-bottom: 0;
+}
+
+/* Theme selection belongs to the writing screen and does not change CMS settings. */
+.content-editor .br-writing-theme {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: 6px;
+  margin-inline: 8px;
+  color: var(--sui-secondary-foreground-color);
+  font: 500 13px/1.2 system-ui, sans-serif;
+}
+.content-editor .br-writing-theme select {
+  max-width: 110px;
+  min-height: 32px;
+  padding: 3px 22px 3px 8px;
+  border: 1px solid var(--sui-control-border-color);
+  border-radius: 5px;
+  background: var(--sui-primary-background-color);
+  color: var(--sui-primary-foreground-color);
+  font: inherit;
+  cursor: pointer;
+}
+.content-editor .br-writing-theme select:focus-visible {
+  outline: 2px solid var(--sui-focus-ring-color);
+  outline-offset: 2px;
+}
+@media (max-width: 520px) {
+  .content-editor .br-writing-theme { gap: 0; margin-inline: 4px; }
+  .content-editor .br-writing-theme > span { display: none; }
+  .content-editor .br-writing-theme select { max-width: 92px; }
+}
+
+.content-editor [data-mode="edit"] {
+  background: var(--br-canvas);
+  color: var(--sui-primary-foreground-color);
+}
+.content-editor > [role="toolbar"] h2,
+.content-editor [data-mode="preview"] #second-pane-header {
+  color: var(--sui-primary-foreground-color);
 }

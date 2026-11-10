@@ -410,3 +410,13 @@ html[data-theme="light"] .content-editor:not([data-br-theme]),
 .content-editor [data-mode="preview"] #second-pane-header {
   color: var(--sui-primary-foreground-color);
 }
+
+/* Put the opening whitespace on the first field, not the scroll container.
+   Sticky editor tools then meet the pane header while scrolling. */
+[data-mode="edit"] #first-pane-body > .content { padding-top: 0; }
+[data-mode="edit"] #first-pane-body > .content > [data-key-path="draft"] {
+  margin-top: clamp(32px, 7vw, 100px);
+}
+@media (max-width: 680px) {
+  [data-mode="edit"] #first-pane-body > .content > [data-key-path="draft"] { margin-top: 28px; }
+}

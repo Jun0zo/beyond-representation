@@ -2,6 +2,7 @@
   {
     "listing": "/tags.html",
     "items": [
+      "/posts/papers/논문리뷰-moco/index.html",
       "/posts/journal/2026-10-31-researching-research/index.html"
     ]
   },
@@ -12,6 +13,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/papers/논문리뷰-moco/index.html",
       "/posts/journal/2026-10-31-researching-research/index.html"
     ]
   },
@@ -27,6 +29,8 @@
   },
   {
     "listing": "/papers.html",
-    "items": []
+    "items": [
+      "/posts/papers/논문리뷰-moco/index.html"
+    ]
   }
 ]

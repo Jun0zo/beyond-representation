@@ -1,7 +1,9 @@
 [
   {
     "listing": "/tags.html",
-    "items": []
+    "items": [
+      "/posts/journal/2026-10-31-researching-research/index.html"
+    ]
   },
   {
     "listing": "/neuroscience.html",
@@ -9,7 +11,9 @@
   },
   {
     "listing": "/index.html",
-    "items": []
+    "items": [
+      "/posts/journal/2026-10-31-researching-research/index.html"
+    ]
   },
   {
     "listing": "/agent.html",
@@ -17,7 +21,9 @@
   },
   {
     "listing": "/journal.html",
-    "items": []
+    "items": [
+      "/posts/journal/2026-10-31-researching-research/index.html"
+    ]
   },
   {
     "listing": "/papers.html",

@@ -87,9 +87,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: [{ data: ['index'] },{ data: ['categories'] }],
+      valueNames: ['listing-project','listing-website','listing-lang','listing-format','listing-engines','listing-language','listing-draft-mode','listing-title','listing-draft','listing-subtitle','listing-description','listing-date','listing-categories','listing-image','listing-image-alt','listing-featured','listing-title-block-categories','listing-path','listing-outputHref','listing-date-modified','listing-author','listing-filename','listing-file-modified','listing-reading-time','listing-word-count',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
       
-      searchColumns: [],
+      searchColumns: ["listing-project","listing-website","listing-lang","listing-format","listing-engines","listing-language","listing-draft-mode","listing-title","listing-draft","listing-subtitle","listing-description","listing-date","listing-categories","listing-image","listing-image-alt","listing-featured","listing-title-block-categories","listing-path","listing-outputHref","listing-date-modified","listing-author","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -219,13 +219,20 @@ window.Quarto = {
 
 <section class="tag-index" data-tag-index="" aria-label="태그별 글">
   <nav class="tag-filters" aria-label="태그 선택">
-    <a href="./tags.html" data-tag-filter="">전체 <span>0</span></a>
-    
+    <a href="./tags.html" data-tag-filter="">전체 <span>1</span></a>
+    <a href="./tags.html?tag=연구하는 방법" data-tag-filter="%EC%97%B0%EA%B5%AC%ED%95%98%EB%8A%94%20%EB%B0%A9%EB%B2%95">#연구하는 방법 <span>1</span></a><a href="./tags.html?tag=Research Journal" data-tag-filter="Research%20Journal">#Research Journal <span>1</span></a>
   </nav>
   <p class="tag-selection" data-tag-selection="" aria-live="polite">전체 글</p>
   <div class="tag-results">
     
-    <p class="tag-empty" data-tag-empty="">해당 태그의 글이 아직 없습니다.</p>
+    <article class="tag-result" data-tag-entry="" data-tags="Research%20Journal|%EC%97%B0%EA%B5%AC%ED%95%98%EB%8A%94%20%EB%B0%A9%EB%B2%95">
+      <p class="archive-date">2026-10-31</p>
+      <h2 class="anchored"><a href="./posts/journal/2026-10-31-researching-research/index.html">나는 연구하는 방법을 연구하고 싶다</a></h2>
+      <p>연구자가 되기 위해 석사를 선택한 이유와 AI 시대에 나만의 질문과 생각을 기록하려는 이유.</p>
+      <div class="post-tags" aria-label="글 태그"><a class="post-tag" href="./tags.html?tag=Research Journal">#Research Journal</a><a class="post-tag" href="./tags.html?tag=연구하는 방법">#연구하는 방법</a></div>
+    </article>
+    
+    <p class="tag-empty" data-tag-empty="" hidden="">해당 태그의 글이 아직 없습니다.</p>
   </div>
 </section>
 <div class="listing-no-matching d-none">일치 없음</div>

@@ -87,9 +87,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: [{ data: ['index'] },{ data: ['categories'] }],
+      valueNames: ['listing-project','listing-website','listing-lang','listing-format','listing-engines','listing-language','listing-draft-mode','listing-title','listing-draft','listing-subtitle','listing-description','listing-date','listing-categories','listing-image','listing-image-alt','listing-featured','listing-title-block-categories','listing-path','listing-outputHref','listing-date-modified','listing-author','listing-filename','listing-file-modified','listing-reading-time','listing-word-count',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-date-modified-sort'] },{ data: ['listing-file-modified-sort'] },{ data: ['listing-reading-time-sort'] },{ data: ['listing-word-count-sort'] }],
       
-      searchColumns: [],
+      searchColumns: ["listing-project","listing-website","listing-lang","listing-format","listing-engines","listing-language","listing-draft-mode","listing-title","listing-draft","listing-subtitle","listing-description","listing-date","listing-categories","listing-image","listing-image-alt","listing-featured","listing-title-block-categories","listing-path","listing-outputHref","listing-date-modified","listing-author","listing-filename","listing-file-modified","listing-reading-time","listing-word-count"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -217,7 +217,24 @@ window.Quarto = {
 
 <div class="quarto-listing quarto-listing-container-custom" id="listing-listing">
 
-<div class="empty-posts"><p>아직 발행된 글이 없습니다. 첫 번째 글을 준비하고 있습니다.</p></div>
+<div class="archive-posts">
+
+  <article class="archive-post">
+    
+    <a class="archive-image" href="./posts/journal/2026-10-31-researching-research/index.html" aria-label="나는 연구하는 방법을 연구하고 싶다 읽기">
+      <img src="./images/original/essay.jpg" alt="접힌 종이로 질문을 되짚는 과정을 표현한 첫 글 표지" loading="lazy">
+    </a>
+    
+    <div class="archive-copy">
+      <p class="archive-date">2026-10-31</p>
+      <h2 class="anchored"><a href="./posts/journal/2026-10-31-researching-research/index.html">나는 연구하는 방법을 연구하고 싶다</a></h2>
+      <p>연구자가 되기 위해 석사를 선택한 이유와 AI 시대에 나만의 질문과 생각을 기록하려는 이유.</p>
+      <div class="post-tags" aria-label="글 태그"><a class="post-tag" href="./tags.html?tag=연구하는 방법">#연구하는 방법</a></div>
+      <a class="text-link" href="./posts/journal/2026-10-31-researching-research/index.html">글 읽기 →</a>
+    </div>
+  </article>
+
+</div>
 
 <div class="listing-no-matching d-none">일치 없음</div>
 </div></main> <!-- /main -->

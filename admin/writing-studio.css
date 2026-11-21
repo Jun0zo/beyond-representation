@@ -420,3 +420,25 @@ html[data-theme="light"] .content-editor:not([data-br-theme]),
 @media (max-width: 680px) {
   [data-mode="edit"] #first-pane-body > .content > [data-key-path="draft"] { margin-top: 28px; }
 }
+
+[data-mode="edit"] .br-image-move {
+  margin-inline-start: 8px;
+  padding: 3px 9px;
+  min-height: 28px;
+  border: 1px solid var(--sui-control-border-color);
+  border-radius: 4px;
+  background: var(--br-canvas);
+  color: var(--br-text);
+  font: 500 12px/1.2 system-ui, sans-serif;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+}
+[data-mode="edit"] .br-image-move:focus-visible { outline: 2px solid var(--sui-focus-ring-color); }
+[data-mode="edit"] [data-component-name] .filled > .preview { cursor: grab; }
+[data-mode="edit"] [data-br-moving], [data-mode="edit"] [data-br-moving] .br-image-move { cursor: grabbing; }
+.lexical-root > [data-br-image-drop="before"] { box-shadow: 0 -3px var(--sui-primary-accent-color); }
+.lexical-root > [data-br-image-drop="after"] { box-shadow: 0 3px var(--sui-primary-accent-color); }
+@media (pointer: coarse) {
+  [data-mode="edit"] .br-image-move { min-height: 44px; min-width: 56px; }
+}

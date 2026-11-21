@@ -1,0 +1,56 @@
+/* Quarto loads this sheet for posts. The writing studio uses the same rules. */
+:is(#quarto-document-content, [data-mode="edit"] [data-key-path="body"] .lexical-root, [data-mode="preview"] [data-key-path="body"]) {
+  --paragraph-gap: 16px;
+  --list-gap: 6px;
+
+  & :is(p, ul, ol):not(:where(header *, figure *, table *, [data-component-name] *)) {
+    font-size: 17px;
+    line-height: 1.7;
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+    margin-block: 0 var(--paragraph-gap);
+  }
+
+  & :is(h1, h2, h3, h4, h5, h6):not(:where(header *, [data-component-name] *)) {
+    line-height: 1.4;
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+    text-transform: none;
+    letter-spacing: -.025em;
+  }
+
+  & :is(h1, h2):not(:where(header *, [data-component-name] *)) {
+    margin-block: 40px 12px;
+    font-size: 27px;
+    font-weight: 500;
+  }
+
+  & :is(h3, h4):not(:where(header *, [data-component-name] *)) {
+    margin-block: 32px 8px;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 20px;
+  }
+
+  & h3:not(:where(header *, [data-component-name] *)) { font-size: 22px; }
+
+  & :is(h5, h6):not(:where(header *, [data-component-name] *)) {
+    margin-block: 20px 4px;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 17px;
+  }
+
+  /* Quarto wraps each heading and its content in a section. */
+  & :is(h1, h2, h3, h4, h5) + :is(h2, h3, h4, h5, h6),
+  & :is(h1, h2, h3, h4, h5) + section > :is(h2, h3, h4, h5, h6):first-child {
+    margin-block-start: 0;
+  }
+
+  & :is(ol, ul):not(:where(header *, [data-component-name] *)) { padding-inline-start: 1.5em; }
+  & li:not(:where(header *, [data-component-name] *)) { margin-block: 0; }
+  & li + li:not(:where(header *, [data-component-name] *)) { margin-block-start: var(--list-gap); }
+  & li > :is(ol, ul):not(:where(header *, [data-component-name] *)) { margin-block: var(--list-gap) 0; }
+  & li > p:not(:where(header *, [data-component-name] *)) { margin-block: 0; }
+  & li > p + p:not(:where(header *, [data-component-name] *)) { margin-block-start: var(--paragraph-gap); }
+}

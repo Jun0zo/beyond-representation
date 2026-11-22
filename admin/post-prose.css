@@ -1,4 +1,10 @@
 /* Quarto loads this sheet for posts. The writing studio uses the same rules. */
+#quarto-content > #quarto-document-content {
+  grid-column: body-start / body-end;
+  width: 100%;
+  padding-inline: 0;
+}
+
 :is(#quarto-document-content, [data-mode="edit"] [data-key-path="body"] .lexical-root, [data-mode="preview"] [data-key-path="body"]) {
   --paragraph-gap: 16px;
   --list-gap: 6px;
